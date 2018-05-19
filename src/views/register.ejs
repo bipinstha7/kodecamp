@@ -1,0 +1,38 @@
+<% include partials/header %>
+
+<div class="container col-md-6 mt-4">
+  <div class="card mb-2">
+    <h5 class="card-header">Create a New Acount</h5>
+    <div class="card-body">
+      <form action="/register" method="POST">
+        <div class="form-group">
+          <input type="text" name="username" placeholder="username" class="form-control">
+        </div>
+        <div class="form-group">
+        <div class="form-group">
+          <input type="text" name="firstName" placeholder="first name" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="lastName" placeholder="last name" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="email" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="avatar" placeholder="avatar image url" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" placeholder="password" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="adminCode" placeholder="admin code" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+      </form>
+    </div>
+  </div>
+  
+  <a href="/campgrounds">Go Back</a>
+
+</div>
+<% include partials/footer %>

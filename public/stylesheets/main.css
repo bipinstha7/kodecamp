@@ -1,0 +1,11 @@
+.img-thumbnail img {
+  width: 100%;
+}
+
+.col-md-9 .img-thumbnail img {
+  height: 500px;
+}
+
+.userImgThumbnail img {
+  height: 200px;
+}

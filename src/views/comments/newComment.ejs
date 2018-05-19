@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+
+<div class="container col-md-6 ">
+  <div class="card">
+    <h5 class="card-header">Leave a review for <%= campground.name %></h5>
+    <div class="card-body">
+      <form action="/campgrounds/<%= campground._id %>/comment" method="POST">
+        <div class="form-group">
+           <textarea name="comment[text]" placeholder="Write comment" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+      </form>
+    </div>
+  </div>
+  
+  <a href="/campgrounds/<%= campground._id %>" class="badge badge-primary">Go Back</a>
+
+</div>
+<% include ../partials/footer %>

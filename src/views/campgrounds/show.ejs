@@ -1,0 +1,98 @@
+<% include ../partials/header %>
+
+<div class="container mb-4">
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action active">Info 1</li>
+        <li class="list-group-item list-group-item-action">Info 2</li>
+        <li class="list-group-item list-group-item-action">Info 3</li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <div class="img-thumbnail p-0">
+        <img src="<%= campground.image %>">
+        <div class="px-2 pt-2">
+          <h5 class="float-right">$<%= campground.price %>/night</h5>
+          <a href=""><h5><%= campground.name %></h5></a>
+          <p><%= campground.description %></p>
+          <em class="d-block">Submitted by: <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a></em>
+          <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
+               <a href="/campgrounds/<%= campground._id %>/edit" class="badge badge-warning mt-2">Edit</a>
+          <% } %>
+          <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+               <a href="" class="badge badge-danger" data-toggle="modal" data-target="#deleteModal">Delete</a>
+          <% } %>
+        </div>
+      </div>
+      <div class="card mt-3 px-3">
+       <div class="body mt-2">
+          <a href="/campgrounds/<%= campground._id %>/comment/new" class="badge badge-primary">Leave a Review</a>
+          <hr>
+          <% campground.comments.forEach(function(comment) { %>
+              <strong><%= comment.author.username %></strong> <span class="float-right">10 days ago</span>
+              <p><%= comment.text %>
+                 <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+                       <small class="d-block">
+                         <a href="/campgrounds/<%= campground._id %>/comment/<%= comment._id %>/edit" class="badge badge-warning d-inline-block">edit</a>
+                       </small>
+                  <% } %>
+                  <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                       <small class="d-block">
+                         <a href="" class="badge badge-danger" data-toggle="modal" data-target="#deleteCommentModal">Delete</a>
+                       </small>
+                  <% } %>
+              </p>
+              
+                      <!-- Comment Delete Modal -->
+                        <div class="modal fade" id="deleteCommentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <p class="lead">Do you really want to delete this comment ?</p>
+                                <p>This can not be undone.</p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type = "button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <form action = "/campgrounds/<%= campground._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
+                                  <button type = "submit" class="btn btn-primary">Delete</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+              
+          <% }); %>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Campground Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel"><%= campground.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="lead">Do you really want to delete this Campground ?</p>
+        <p>This can not be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+          <button type="submit" class="btn btn-primary">Ok! Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<% include ../partials/footer %>
