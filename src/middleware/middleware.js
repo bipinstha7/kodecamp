@@ -6,6 +6,7 @@ var middlewareObject = {};
 // Campground authentication
 middlewareObject.checkCampgroundOwnership = function(req, res, next) {
   // is user logged in?
+  // req.isAuthenticated is passport middleware
   if(req.isAuthenticated()) {
     Campground.findById(req.params.id, function(err, foundCampground) {
       if(err || !foundCampground) {
