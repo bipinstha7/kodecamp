@@ -1,14 +1,14 @@
-const campground = require("./src/models/campground"),
-const comment = require("./src/models/comments"),
-const methodOverride = require("method-override"),
-const passportLocal = require("passport-local"),
-const User = require("./src/models/user"),
-const connectFlash = require("connect-flash"),
-const bodyParser = require("body-parser"),
-const passport = require("passport"),
-const mongoose = require("mongoose"),
-const express = require("express"),
-const seedDB = require("./seeds"),
+const campground = require("./src/models/campground");
+const comment = require("./src/models/comments");
+const methodOverride = require("method-override");
+const passportLocal = require("passport-local");
+const User = require("./src/models/user");
+const connectFlash = require("connect-flash");
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const mongoose = require("mongoose");
+const express = require("express");
+const seedDB = require("./seeds");
 const app = express();
     
     
