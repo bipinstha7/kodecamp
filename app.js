@@ -41,6 +41,7 @@ passport.use(new passportLocal(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// req.user comes from the passport middleware
 // req.user gives username and id
 // req.user contains the authenticated user.
 // ie it contains the information of currently logged in user
