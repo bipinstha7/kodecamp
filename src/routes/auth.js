@@ -1,8 +1,8 @@
-var User = require("../models/user"),
-    passport = require("passport"),
-    express = require("express"),
-    router = express.Router(),
-    Campground = require("../models/campground");
+const User = require("../models/user"),
+const passport = require("passport"),
+const express = require("express"),
+const router = express.Router(),
+const Campground = require("../models/campground");
 
 // AUTH ROUTE 
 
